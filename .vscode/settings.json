@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Dino_Run_Homerun.sln"
+    "dotnet.defaultSolution": "Dino_Run_Homework.sln"
 }
