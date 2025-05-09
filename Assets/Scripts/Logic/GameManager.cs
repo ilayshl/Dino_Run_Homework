@@ -1,15 +1,18 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private bool waitingForInput = false;
+
     public static GameManager Instance;
 
     void Awake()
     {
-            if(Instance != null && Instance != this)
-            {
-                Destroy(Instance);
-            }
+        if (Instance != null && Instance != this)
+        {
+            Destroy(Instance);
+        }
     }
 
     void Start()
@@ -17,25 +20,80 @@ public class GameManager : MonoBehaviour
         ChangeGameState();
     }
 
-    private void ChangeGameState(GameState newState = GameState.RoundPlays)
+    private void ChangeGameState(GameState newState = GameState.InputCountdown)
     {
-        switch(newState)
+        switch (newState)
         {
             case GameState.InputCountdown:
 
-            break;
+                break;
             case GameState.WaitingForInput:
 
-            break;
+                break;
             case GameState.RoundPlays:
 
-            break;
+                break;
             case GameState.RoundWinP1:
 
-            break;
+                break;
             case GameState.RunEnd:
 
-            break;
+                break;
+        }
+    }
+
+    private IEnumerator InputCountdown(int seconds, float multiplier)
+    {
+        waitingForInput = true;
+        while (seconds > 0)
+        {
+            Debug.Log(seconds);
+            yield return new WaitForSeconds(1 / multiplier);
+            seconds--;
+        }
+        waitingForInput = false;
+        Debug.Log("Finished countdown!");
+    }
+
+    private IEnumerator CheckForInput()
+    {
+        while (waitingForInput)
+        {
+            CheckForInputP1();
+            CheckForInputP2();
+            yield return null;
+        }
+    }
+
+    private void CheckForInputP1()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            //Q
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            //W
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            //E
+        }
+    }
+
+    private void CheckForInputP2()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            //I
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            //O
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            //P
         }
     }
 }

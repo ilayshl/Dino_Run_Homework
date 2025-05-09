@@ -4,7 +4,7 @@ using UnityEngine;
 public class Obstacle : ScriptableObject
 {
     [SerializeField] private ObstacleLaneType designatedLane;
-    public ObstacleLaneType DisgnatedLane {get => designatedLane;}
+    public ObstacleLaneType DesignatedLane {get => designatedLane;}
     [SerializeField] private GameObject[] obstacleObjects;
     public GameObject[] ObstacleObjects {get => obstacleObjects;}
 }
