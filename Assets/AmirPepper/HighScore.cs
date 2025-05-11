@@ -10,7 +10,7 @@ public class HighScore : MonoBehaviour
 
     private TextMesh _p1CurrentScoreDisplay;
 
-    private int _p1CurrentScore = 0;
+    private int _p1CurrentScore = 1;
     private string _p1Name;
    
     // public int p2currentScore;
@@ -33,7 +33,8 @@ public class HighScore : MonoBehaviour
     {
         _p1CurrentScore++;
         _entryP1.Score = _p1CurrentScore;
-        //_entryP1.Name = 
+        _entryP1.Name = "Shaked";
+      //  _entryP1.Name = 
             //input here a prompt allowing winning player to place his name if he is the high score holder.
 
         _leaderboard.AddEntryP1(_entryP1);     

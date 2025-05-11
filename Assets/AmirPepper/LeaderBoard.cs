@@ -18,13 +18,13 @@ public class LeaderBoard
         if (ExistsInP1LeaderBoard(entry))
         {
             int savedHighScore = PlayerPrefs.GetInt("SavedHighScore", 0);
-            Debug.Log(savedHighScore);
+           // Debug.Log(savedHighScore);
             if (entry.Score > savedHighScore)
             {
                 PlayerPrefs.SetInt("SavedHighScore", entry.Score);
-                //add method to write text for the high score name
+                    //add method to write text for the high score name
             }
-
+            return;
         }
         else
         {
@@ -39,7 +39,7 @@ public class LeaderBoard
     {
         foreach(var item in _p1LeaderboardEntry)
         {
-            if(item.name == entry.name)
+            if(item.Name == entry.Name)
             {
                 return true;
             }
@@ -59,7 +59,7 @@ public class LeaderBoard
     {
         foreach(var item in _p1LeaderboardEntry)
         {
-            if(item.name == entry.name)
+            if(item.Name == entry.Name)
             {
                 return true;
             }

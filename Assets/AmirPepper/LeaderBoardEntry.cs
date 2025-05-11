@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
 [System.Serializable]
-public class LeaderBoardEntry : MonoBehaviour
+public class LeaderBoardEntry 
 {
     public string Name;
 
@@ -10,8 +10,8 @@ public class LeaderBoardEntry : MonoBehaviour
 
     public LeaderBoardEntry(string name, int score)
     {
-        name = Name;
-        score = Score;
+        name = this.Name;
+        score = this.Score;
         
     }
 }
