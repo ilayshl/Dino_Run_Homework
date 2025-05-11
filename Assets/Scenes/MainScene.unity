@@ -251,7 +251,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234ebc0bdd1462f4390f7bb87a013dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePool: []
+  obstaclePool:
+  - {fileID: 11400000, guid: ccf55344f4b72394693a724122d90673, type: 2}
+  - {fileID: 11400000, guid: 258040d4d810d43dc9ff8e78c01845ca, type: 2}
+  - {fileID: 11400000, guid: 24a3215800c9843cf8e479ac16ad1dc2, type: 2}
 --- !u!114 &278509516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -841,6 +844,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 957939134}
     m_Modifications:
+    - target: {fileID: -5400805591998858597, guid: c14ec265aff95d146a6152a7ad7aba24,
+        type: 3}
+      propertyPath: m_Torque
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5400805591998858597, guid: c14ec265aff95d146a6152a7ad7aba24,
+        type: 3}
+      propertyPath: m_RelativeForce.y
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4138150550507275994, guid: c14ec265aff95d146a6152a7ad7aba24,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -918,7 +931,7 @@ PrefabInstance:
     - target: {fileID: 3115058081443383607, guid: 79adedac3a6d27d43a1193a5c3eee527,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.28884
+      value: 14.24
       objectReference: {fileID: 0}
     - target: {fileID: 3115058081443383607, guid: 79adedac3a6d27d43a1193a5c3eee527,
         type: 3}
