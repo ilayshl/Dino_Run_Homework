@@ -1,16 +1,15 @@
 using UnityEngine;
 
+/// <summary>
+/// Spins the fucker
+/// </summary>
 public class SpinningMovement : MonoBehaviour
 {
-    /// <summary>
-    /// spins the fucker
-    /// </summary>
-   
+
     [SerializeField] private Transform map;
     [SerializeField] private float rotationSpeed;
 
     private float _playerHorzMovement;
-
 
     private void Update()
     {
@@ -20,6 +19,6 @@ public class SpinningMovement : MonoBehaviour
     private void UpdatePlayerInput()
     {
         _playerHorzMovement = Input.GetAxis("Horizontal") * -1f;
-        transform.Rotate(0, _playerHorzMovement * rotationSpeed * Time.deltaTime, 0);
+        map.Rotate(0, 0, _playerHorzMovement * rotationSpeed * Time.deltaTime);
     }
 }
