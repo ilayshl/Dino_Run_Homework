@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: afeb4927474e3174893eb4cdb45eb6cc, type: 3}
-  m_Name: Obstacles
+  m_Name: OneLaneLow
   m_EditorClassIdentifier: 
-  lanes: 0
-  prefab: {fileID: 0}
+  lanes: 1
+  prefab: {fileID: 4029223453935957211, guid: 70c217afc8de24fceb51ab7c3573152e, type: 3}

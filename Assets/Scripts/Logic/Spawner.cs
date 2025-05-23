@@ -1,18 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+   [SerializeField] private Spawnable[] obstacles;
+   [SerializeField] private Spawnable[] pickups;
+
+   public GameObject SpawnObstacle(Transform parent, int lanesWidth)
+   {
+    GameObject obstacleToSpawn = null;
+    foreach(var obstacle in obstacles)
     {
-        
+        if(lanesWidth == obstacle.Lanes)
+        {
+            obstacleToSpawn = obstacle.Prefab;
+        }
+    }
+    if(obstacleToSpawn == null)
+    {
+        Debug.LogWarning("Error: no obstacle to spawn!");
+        return null;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    return Instantiate(obstacleToSpawn, parent.position, parent.rotation, parent);
+   } 
 }
