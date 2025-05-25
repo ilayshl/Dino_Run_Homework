@@ -7,18 +7,16 @@ public class Amir_PlayerMovement : MonoBehaviour
 {
 
     [SerializeField] private float rotationSpeed;
-    [SerializeField] private Transform toPosition;
-    [SerializeField] private Transform toPosition2;
+    [SerializeField] private float slerpTo = 35f;
 
-    private Vector3 startPos;
-    private Quaternion startRot;
+    private Quaternion _startRot;
+
 
     private float _playerHorzMovement;
 
     private void Start()
     {
-        startPos = transform.position;
-        startRot = transform.rotation;
+        _startRot = transform.rotation;
     }
 
     private void Update()
@@ -26,48 +24,27 @@ public class Amir_PlayerMovement : MonoBehaviour
         UpdatePlayerInput();
     }
 
-
     private void UpdatePlayerInput()
     {
-        float whereTo = Input.GetAxis("Horizontal");
-        MoveTo(whereTo);
+        float playerInput = Input.GetAxis("Horizontal");
+        RotatePlayer(playerInput);
     }
 
-    private void MoveTo(float whereTo)
+    private void RotatePlayer(float playerInput)
     {
-        if (Mathf.Abs(whereTo) > 0.1)
+        if (playerInput == 0)
         {
-            if (whereTo > 0)
-            {
-                var xPos = Mathf.InverseLerp(transform.position.x, toPosition.position.x, rotationSpeed * Time.deltaTime);
-                var yPos = Mathf.InverseLerp(transform.position.y, toPosition.position.y, rotationSpeed * Time.deltaTime);
-
-                var xRot = Mathf.InverseLerp(transform.rotation.x, toPosition.rotation.x, rotationSpeed * Time.deltaTime);
-                var yRot = Mathf.InverseLerp(transform.rotation.y, toPosition.rotation.y, rotationSpeed * Time.deltaTime);
-
-                transform.position = new Vector3(xPos, yPos, transform.position.z);
-                transform.rotation = Quaternion.Euler(xRot, yRot, transform.rotation.z);
-            }
-            else
-            {
-                var xPos = Mathf.MoveTowards(transform.position.x, toPosition2.position.x, rotationSpeed * Time.deltaTime);
-                var yPos = Mathf.MoveTowards(transform.position.y, toPosition2.position.y, rotationSpeed * Time.deltaTime);
-
-                var xRot = Mathf.MoveTowards(transform.rotation.x, toPosition2.rotation.x, rotationSpeed * Time.deltaTime);
-                var yRot = Mathf.MoveTowards(transform.rotation.y, toPosition2.rotation.y, rotationSpeed * Time.deltaTime);
-
-                transform.position = new Vector3(xPos, yPos, transform.position.z);
-                transform.rotation = Quaternion.Euler(xRot, yRot, transform.rotation.z);
-            }
+            Quaternion goHome = Quaternion.Slerp(transform.rotation, _startRot, rotationSpeed * Time.deltaTime);
+            transform.rotation = goHome;
         }
-        else if (whereTo == 0)
+        else if(Mathf.Abs(playerInput) > 0.01f)
         {
-            var xPos = Mathf.Lerp(transform.position.x, startPos.x, rotationSpeed * Time.deltaTime);
-            var yPos = Mathf.Lerp(transform.position.y, startPos.y, rotationSpeed * Time.deltaTime);
+            var whichWay = playerInput * slerpTo * -1;
+            Quaternion fitIn = Quaternion.Euler(0,0,whichWay);
 
-            transform.position = new Vector3 (xPos, yPos, transform.position.z);
-            
-            Quaternion d = Quaternion.Lerp(transform.rotation, startRot, rotationSpeed * Time.deltaTime);
+            Quaternion goTo = Quaternion.Slerp(transform.rotation, fitIn, rotationSpeed * Time.deltaTime);
+
+            transform.rotation = goTo;
         }
     }
 }

@@ -19,7 +19,7 @@ public class SpinningMovement : MonoBehaviour
 
     private void UpdatePlayerInput()
     {
-        _playerHorzMovement = Input.GetAxis("Horizontal") * -1f;
+        _playerHorzMovement = Input.GetAxis("Horizontal");
         transform.Rotate(0, _playerHorzMovement * rotationSpeed * Time.deltaTime, 0);
     }
 }
